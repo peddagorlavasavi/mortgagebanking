@@ -8,6 +8,4 @@ import com.strikers.mortgagebanking.entity.Mortgage;
 @Repository
 public interface MortgageRepository extends JpaRepository<Mortgage, Integer>{
 
-	Integer findByCustomerId(Integer customerId);
-
 }

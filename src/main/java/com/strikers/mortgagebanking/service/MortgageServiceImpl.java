@@ -1,29 +1,39 @@
 package com.strikers.mortgagebanking.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.strikers.mortgagebanking.entity.Account;
-import com.strikers.mortgagebanking.entity.Mortgage;
+import com.strikers.mortgagebanking.entity.Customer;
 import com.strikers.mortgagebanking.repository.AccountRepository;
+import com.strikers.mortgagebanking.repository.CustomerRepository;
 import com.strikers.mortgagebanking.repository.MortgageRepository;
+import com.strikers.mortgagebanking.utils.StringConstant;
 
 @Service
-public class MortgageServiceImpl implements MortgageService{
+public class MortgageServiceImpl implements MortgageService {
 
 	@Autowired
 	MortgageRepository mortgageRepository;
 
 	@Autowired
 	AccountRepository accountRepository;
-	
+
+	@Autowired
+	CustomerRepository customerRepository;
+
 	@Override
-	public Integer searchAccount(Integer customerId) {
-		Account account= accountRepository.findByCustomerId(customerId);
-		if(account!=null) {
-			
+	public List<Customer> searchAccount(Integer customerId, Long accountNumber) {
+		Customer customer = customerRepository.findCustomerByRole(customerId, StringConstant.ADMIN_ROLE);
+		List<Customer> list = new ArrayList<>();
+		if (customer != null) {
+			List<Customer> availableList = accountRepository.findByAccountNumber(accountNumber);
+			return availableList;
+		} else {
+			return list;
 		}
-		return customerId;
-		
+
 	}
 }

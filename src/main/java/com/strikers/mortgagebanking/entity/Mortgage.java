@@ -32,7 +32,7 @@ public class Mortgage {
 	private Double emi;
 
 	@OneToOne
-	@JoinColumn(name = "customer_id")
-	private Account customer;
+	@JoinColumn(name = "account_number")
+	private Account account;
 
 }

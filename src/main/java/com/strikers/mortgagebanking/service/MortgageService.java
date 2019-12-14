@@ -1,8 +1,10 @@
 package com.strikers.mortgagebanking.service;
 
-import com.strikers.mortgagebanking.entity.Mortgage;
+import java.util.List;
+
+import com.strikers.mortgagebanking.entity.Customer;
 
 public interface MortgageService {
 
-	public Integer searchAccount(Integer customerId);
+	public List<Customer> searchAccount(Integer customerId, Long accountNumber);
 }

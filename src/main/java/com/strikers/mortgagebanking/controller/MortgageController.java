@@ -3,14 +3,14 @@ package com.strikers.mortgagebanking.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.strikers.mortgagebanking.entity.Mortgage;
+import com.strikers.mortgagebanking.entity.Customer;
 import com.strikers.mortgagebanking.service.MortgageService;
 
 @RestController
@@ -20,10 +20,10 @@ public class MortgageController {
 
 	@Autowired
 	MortgageService mortgageService;
-	
+
 	@GetMapping
-	public Integer getMyInterestProfiles(@PathVariable("customerId") Integer customerId) {
-		return mortgageService.searchAccount(customerId);
-	
+	public List<Customer> getMyInterestProfiles(@PathVariable("customerId") Integer customerId, @RequestParam Long accountNumber) {
+		return mortgageService.searchAccount(customerId, accountNumber);
+
 	}
 }
