@@ -33,6 +33,6 @@ public class Mortgage {
 
 	@OneToOne
 	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private Account customer;
 
 }

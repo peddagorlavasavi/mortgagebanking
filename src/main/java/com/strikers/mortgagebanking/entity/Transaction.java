@@ -28,7 +28,7 @@ public class Transaction {
 	
 	@OneToOne
 	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private Account customer;
 	
 	private Double transactionAmount;
 	private String status;

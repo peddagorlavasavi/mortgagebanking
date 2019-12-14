@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -14,21 +15,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user")
+@Table(name = "customer")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+@SequenceGenerator(name = "accountsequence", initialValue = 100100)
+public class Account {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer userId;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accountsequence")
+	private Long accountNumber;
+	private Double balance;
+	private String accountType;
+	
 	
 	@OneToOne
-	@JoinColumn(name = "customer_id")
-	private Customer customer;
-	
-	private String password;
-	private String role;
-
+	@JoinColumn(name="customer_id")
+	Customer customer;
 }
