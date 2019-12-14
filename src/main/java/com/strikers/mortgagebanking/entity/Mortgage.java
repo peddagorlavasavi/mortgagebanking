@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,10 +19,9 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(name = "mortgagesequence", initialValue = 200002000)
 public class Mortgage {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mortgagesequence")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer mortgageId;
 	private String mortgageType;
 	private Double interest;

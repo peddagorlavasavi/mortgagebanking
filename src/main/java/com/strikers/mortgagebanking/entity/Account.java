@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "account")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -31,5 +31,5 @@ public class Account {
 	
 	@OneToOne
 	@JoinColumn(name="customer_id")
-	Customer customer;
+	private Customer customer;
 }

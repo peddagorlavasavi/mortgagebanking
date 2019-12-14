@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.strikers.mortgagebanking.entity.Account;
 import com.strikers.mortgagebanking.entity.Customer;
 import com.strikers.mortgagebanking.repository.AccountRepository;
 import com.strikers.mortgagebanking.repository.CustomerRepository;
@@ -25,11 +26,11 @@ public class MortgageServiceImpl implements MortgageService {
 	CustomerRepository customerRepository;
 
 	@Override
-	public List<Customer> searchAccount(Integer customerId, Long accountNumber) {
+	public List<Account> searchAccount(Integer customerId, Long accountNumber) {
 		Customer customer = customerRepository.findCustomerByRole(customerId, StringConstant.ADMIN_ROLE);
-		List<Customer> list = new ArrayList<>();
+		List<Account> list = new ArrayList<>();
 		if (customer != null) {
-			List<Customer> availableList = accountRepository.findByAccountNumber(accountNumber);
+			List<Account> availableList = accountRepository.findByAccountNumber(accountNumber);
 			return availableList;
 		} else {
 			return list;
