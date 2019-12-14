@@ -27,8 +27,12 @@ public class Transaction {
 	private Integer transactionId;
 	
 	@OneToOne
-	@JoinColumn(name = "customer_id")
-	private Account customer;
+	@JoinColumn(name = "from_number")
+	private Account fromAccount;
+	
+	@OneToOne
+	@JoinColumn(name = "to_number")
+	private Account toAccount;
 	
 	private Double transactionAmount;
 	private String status;

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.strikers.mortgagebanking.entity.Account;
-import com.strikers.mortgagebanking.entity.Mortgage;
 import com.strikers.mortgagebanking.repository.AccountRepository;
 import com.strikers.mortgagebanking.repository.MortgageRepository;
 
